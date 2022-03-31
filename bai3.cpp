@@ -1,17 +1,19 @@
-#include <iostream>
-#include <string>
+#include<bits/stdc++.h>
 using namespace std;
-int m(string s);
-int main() {
+int m(string s,int i, int j);
+int main()
+{
     string s;
-    cin >> s;
-    cout << m(s);
+    getline(cin,s);
+    cout << m(s,0,s.length()-1);
 }
-int m(string s){
-    int num = s.size(); //the length of string s
-    int minstrings = s[0] - '0';  //bien luu chu so nho nhat trong day
-    for(int i = 1; i < num; i++){
-      if(s[i] - '0' < minstrings) minstrings = s[i] - '0';
+int m(string s,int i, int j){
+    if(i == j)
+    {
+        return s[j]-'0';
     }
-    return minstrings;
+    else
+    {
+        return min(s[j]-'0',m(a,i,j-1));
+    }
 }
