@@ -1,17 +1,14 @@
 #include <iostream>
 #include <string>
 using namespace std;
-int ones(string s);
+int ones(string s,int counts,int place);
 int main() {
     string s;
     cin >> s;
-    cout << ones(s);
+    cout << ones(s,0,s.size() - 1);
 }
-int ones(string s){
-    int num = s.size(); //the length of string s
-    int counts = 0;  //so bit 1 trong xau
-    for(int i = 0; i < num; i++){
-      if(s[i] == '1') counts++; //kiem tra va dem so bit 1 trong xau
-    }
-    return counts;
+int ones(string s,int counts,int place){
+    if(s[place] == '1') counts++;
+    if(place == 0) return counts;
+    return ones(s,counts,place - 1);
 }
