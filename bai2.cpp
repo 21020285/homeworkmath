@@ -1,14 +1,15 @@
 #include <iostream>
 #include <string>
 using namespace std;
-int ones(string s,int counts,int place);
+int ones(string s);
 int main() {
     string s;
     cin >> s;
-    cout << ones(s,0,s.size() - 1);
+    cout << ones(s);
 }
-int ones(string s,int counts,int place){
-    if(s[place] == '1') counts++;
-    if(place == 0) return counts;
-    return ones(s,counts,place - 1);
+int ones(string s){
+    if(s.size() == 0) return 0;
+    char x = s[0];
+    s.erase(s.begin());
+    return (x - '0') + ones(s);
 }
